@@ -1,0 +1,244 @@
+/* *************************************************
+    CSS stylesheet for final project (Intro to CSS3)
+*********************************************** */
+/* ////////////////////
+    Assignment items
+///////////////////////
+
+1. 5 pages - all with images (some are backgrounds)
+2. Code has been validated
+3. "Skip to main content" link appears on "focus" only (line 63)
+4. Navigation bar is styled with at least 3 properties (line 79)
+5. All images (non-background) are styled using the box model (line 123)
+6. Grid property applied to at least one parent element ("gallery" class and "header")
+7. flex property applied to at least one parent element (line 171 - "map" class)
+8. Hover pseudo-class used on "bed" element and images
+9. nth child selector used on gallery images (line 164)
+*/
+
+
+/* font styling */
+body {
+    position: relative;
+    color: rgb(103, 64, 28);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 800;
+}
+
+h1 {
+    color: rgb(103, 64, 28);
+    font-size: 45px;
+    font-weight: 200;
+    font-variant: small-caps;
+} 
+
+h2, h3, h4, h5, h6 {
+    font-weight: 200;
+    font-variant: small-caps;
+}
+
+.bed h4, li{
+    font-family:cursive ;
+    font-size: 3em;
+    color:rgb(39, 105, 4);
+}
+
+/* LINK STYLING */
+
+a:link, a:visited {
+    color: rgb(103, 64, 28);
+    font-weight: 700;
+}
+
+
+
+/* HEADER STYLING */
+header {
+    margin: 0 auto;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    height: 250px;
+    width: 90%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../images/garden_header_bkgrnd.png");
+}
+
+/* Jump to main link */
+#jump_link {
+    position: relative;
+    left: -1000px;
+    padding: 10px;
+    text-decoration: none;    
+    transition-property: all;
+    transition-duration: 1s;
+}
+
+#jump_link:focus {
+    left: 10%; 
+    font-size: 20px;
+}
+
+/* NAV BAR STYLING */
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
+}
+nav a {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 600;
+    color: rgb(103, 64, 28);
+    font-size: 18px;
+    margin: 10px;
+    transition-property: font-size;
+    transition-duration: .3s;
+}
+
+nav a:hover {
+    font-size: 1.5em;
+}
+
+a.current_page {
+    text-decoration: none;
+    font-size: 16px !important;
+    color:rgb(114, 114, 114);
+}
+
+/* FOOTER STYLING */
+
+footer {
+    height: 100px;
+    padding-top: 30px;
+    background-image: url(../images/wild_flower_border.png);
+    background-size: contain;
+    background-position: center;
+    text-align: center;
+}
+
+footer a {
+    font-size: 2em;
+}
+
+
+/* IMAGE STYLING */
+
+.grid_title {
+    text-align: center;
+    font-size: 40px;
+    color: rgb(103, 64, 28);
+}
+
+.gallery {
+    margin: auto;
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 10px;
+    row-gap: 10px;
+    padding: 20px;
+}
+
+.gallery img {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 2%;
+    background-color: #fff;
+    border: 4px double rgb(103, 64, 28);
+    border-radius: 8px;
+    transition-property: all;
+    transition-duration: .3s;
+}
+
+.gallery img:hover {
+    transform:scale(1.3) ;
+    z-index: 1;
+    border: none;
+    border-radius: 15%;
+    padding: 5%;
+
+}
+
+img:nth-child(odd):hover {
+    background-image:radial-gradient(circle, #fff 70%, rgb(159, 82, 10));
+}
+img:nth-child(even):hover {
+    background-image:radial-gradient(circle, #fff 70%, rgb(58, 152, 7));
+}
+
+/* MAP STYLING ON HOMEPAGE */
+
+.map {
+   box-sizing: border-box;
+    /* position: relative; */
+    padding: 5%;
+    width: 75%;
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 10px inset black;
+    background-image: radial-gradient( #fff 60%, rgb(148,89,89));
+}
+
+.bed {
+    position: relative;
+    box-sizing: border-box;
+    width: 75%;
+    /* max-height:150px; */
+    border: 6px ridge rgb(148, 89, 89);
+    border-radius: 25px;
+
+    margin: 2% auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    line-height: 1em;
+    background-color: rgba(159, 100, 100, 0.459);
+    background-image: url("../images/background_radish.png");
+    background-repeat: repeat;
+    background-size: cover;
+    transition-property: all;
+    transition-timing-function: ease-in-out;
+    transition-duration: .5s;
+
+}
+
+map>a {
+    width: 75%;
+}
+
+.bed .plant_list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    overflow: hidden;
+    list-style-position: inside;
+    position: relative;
+    bottom: -10000px;
+    transition: bottom 1.5s ease-in-out;
+}
+
+.bed:hover {
+    /* height: 200px; */
+    transform: scale(1.3);
+    line-height: normal;
+    z-index: 1;
+    background-color: #fff;
+}
+
+.bed:hover .plant_list {
+    bottom: 0;
+}
+
+.plant_list li {
+    padding: 0 .5em;
+    font-size: 2em;
+}
+
+.map a {
+    text-decoration: none;
+}
